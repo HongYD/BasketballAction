@@ -1,0 +1,34 @@
+{
+    "name": "InputActionsAsset",
+    "maps": [
+        {
+            "name": "PlayerMovement",
+            "id": "cfcb1bd4-6bdf-44da-8179-fcc1d0b2b7ea",
+            "actions": [
+                {
+                    "name": "Up",
+                    "type": "Value",
+                    "id": "12c41a52-2e90-4492-8b41-f4433b50dac3",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c601779f-27bb-45e0-ac9d-444e808a4cde",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
