@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     InputActionsAsset playerMovement;
+    
     Vector2 move;
     public float speed = 10;
 
