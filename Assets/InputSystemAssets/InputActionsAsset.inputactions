@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Receive",
+                    "type": "Button",
+                    "id": "a622d61b-dca5-4ed6-ba89-c057656474c3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -103,11 +112,22 @@
                 {
                     "name": "",
                     "id": "41b5eb30-6dcb-45f0-8132-c8c2c5bdd918",
-                    "path": "<Keyboard>/k",
+                    "path": "<Keyboard>/p",
                     "interactions": "Hold(duration=0.6)",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Pass",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd2f424c-b1c7-4179-9d11-ec6b7052ad50",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Receive",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

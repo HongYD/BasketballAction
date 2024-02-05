@@ -24,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
         playerMovement.PlayerControls.Move.canceled += OnMoveCanceled;
         playerMovement.PlayerControls.Shoot.performed += OnShoot;
         playerMovement.PlayerControls.Pass.performed += OnPass;
+        playerMovement.PlayerControls.Receive.performed += OnReceive;
+    }
+
+    private void OnReceive(InputAction.CallbackContext context)
+    {
+        playerAnimator.SetTrigger("ReceiveBall");
+        ballAnimator.SetTrigger("ReceiveBall");
+        Debug.Log($"°´ÏÂ½ÓÇò¼üK" + context);
     }
 
     private void OnPass(InputAction.CallbackContext context)

@@ -53,6 +53,15 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Receive"",
+                    ""type"": ""Button"",
+                    ""id"": ""a622d61b-dca5-4ed6-ba89-c057656474c3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -125,11 +134,22 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""41b5eb30-6dcb-45f0-8132-c8c2c5bdd918"",
-                    ""path"": ""<Keyboard>/k"",
+                    ""path"": ""<Keyboard>/p"",
                     ""interactions"": ""Hold(duration=0.6)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Pass"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd2f424c-b1c7-4179-9d11-ec6b7052ad50"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Receive"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -166,6 +186,7 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
         m_PlayerControls_Move = m_PlayerControls.FindAction("Move", throwIfNotFound: true);
         m_PlayerControls_Shoot = m_PlayerControls.FindAction("Shoot", throwIfNotFound: true);
         m_PlayerControls_Pass = m_PlayerControls.FindAction("Pass", throwIfNotFound: true);
+        m_PlayerControls_Receive = m_PlayerControls.FindAction("Receive", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -228,6 +249,7 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControls_Move;
     private readonly InputAction m_PlayerControls_Shoot;
     private readonly InputAction m_PlayerControls_Pass;
+    private readonly InputAction m_PlayerControls_Receive;
     public struct PlayerControlsActions
     {
         private @InputActionsAsset m_Wrapper;
@@ -235,6 +257,7 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerControls_Move;
         public InputAction @Shoot => m_Wrapper.m_PlayerControls_Shoot;
         public InputAction @Pass => m_Wrapper.m_PlayerControls_Pass;
+        public InputAction @Receive => m_Wrapper.m_PlayerControls_Receive;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -253,6 +276,9 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
                 @Pass.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPass;
                 @Pass.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPass;
                 @Pass.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPass;
+                @Receive.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnReceive;
+                @Receive.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnReceive;
+                @Receive.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnReceive;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -266,6 +292,9 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
                 @Pass.started += instance.OnPass;
                 @Pass.performed += instance.OnPass;
                 @Pass.canceled += instance.OnPass;
+                @Receive.started += instance.OnReceive;
+                @Receive.performed += instance.OnReceive;
+                @Receive.canceled += instance.OnReceive;
             }
         }
     }
@@ -293,5 +322,6 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnPass(InputAction.CallbackContext context);
+        void OnReceive(InputAction.CallbackContext context);
     }
 }
