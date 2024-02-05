@@ -206,7 +206,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -218,7 +218,7 @@ MonoBehaviour:
           m_StringArgument: Standing Idle No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -363,7 +363,7 @@ MonoBehaviour:
           m_StringArgument: Jog R Stop With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -496,7 +496,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -508,7 +508,7 @@ MonoBehaviour:
           m_StringArgument: Jog BWD Start No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -641,7 +641,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -653,7 +653,7 @@ MonoBehaviour:
           m_StringArgument: Jog BWD Start With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -784,89 +784,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129305002}
   m_CullTransparentMesh: 0
---- !u!4 &154011554 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-  m_PrefabInstance: {fileID: 2039996608}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &156302919
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 154011554}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_Name
-      value: SK_Basketball
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866666021909216657, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: aa74d608b3361ba45a1b81d1f4f0c6f8, type: 2}
-    - target: {fileID: 5866666021909216657, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_CullingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866666021909216657, guid: 8972c2371174d274cb47af567a136900, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8972c2371174d274cb47af567a136900, type: 3}
---- !u!95 &156302920 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 8972c2371174d274cb47af567a136900, type: 3}
-  m_PrefabInstance: {fileID: 156302919}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &167720128
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +867,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -962,7 +879,7 @@ MonoBehaviour:
           m_StringArgument: Jog FWD Stop With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -1267,7 +1184,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -1279,7 +1196,7 @@ MonoBehaviour:
           m_StringArgument: Jog R With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -1412,7 +1329,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -1424,7 +1341,7 @@ MonoBehaviour:
           m_StringArgument: Jog FWD Start No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -2070,7 +1987,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -2082,7 +1999,7 @@ MonoBehaviour:
           m_StringArgument: Dribble
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -2215,7 +2132,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -2227,7 +2144,7 @@ MonoBehaviour:
           m_StringArgument: Jog L No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -2800,7 +2717,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -2812,7 +2729,7 @@ MonoBehaviour:
           m_StringArgument: Jog L With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -2945,7 +2862,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -2957,7 +2874,7 @@ MonoBehaviour:
           m_StringArgument: Receive The Ball Left
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -3200,8 +3117,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 154011554}
-  m_Follow: {fileID: 154011554}
+  m_LookAt: {fileID: 543450651693844267}
+  m_Follow: {fileID: 543450651693844267}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -3394,7 +3311,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -3406,7 +3323,7 @@ MonoBehaviour:
           m_StringArgument: Jog R Start No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -3906,7 +3823,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -3918,7 +3835,7 @@ MonoBehaviour:
           m_StringArgument: Jog BWD No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -4130,7 +4047,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -4142,7 +4059,7 @@ MonoBehaviour:
           m_StringArgument: Receive The Ball Right
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -4521,7 +4438,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -4533,7 +4450,7 @@ MonoBehaviour:
           m_StringArgument: Jog BWD Stop No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -4903,7 +4820,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -4915,7 +4832,7 @@ MonoBehaviour:
           m_StringArgument: Jog BWD Stop With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -5143,7 +5060,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -5155,7 +5072,7 @@ MonoBehaviour:
           m_StringArgument: Jog L Start No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -5335,7 +5252,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -5347,7 +5264,7 @@ MonoBehaviour:
           m_StringArgument: Jog FWD Start With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -5561,7 +5478,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -5573,7 +5490,7 @@ MonoBehaviour:
           m_StringArgument: Jog L Stop No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -5706,7 +5623,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -5718,7 +5635,7 @@ MonoBehaviour:
           m_StringArgument: Chest Pass Left
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -5851,7 +5768,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -5863,7 +5780,7 @@ MonoBehaviour:
           m_StringArgument: Jog FWD Stop No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -6089,7 +6006,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -6101,7 +6018,7 @@ MonoBehaviour:
           m_StringArgument: Defense
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -6234,7 +6151,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -6246,7 +6163,7 @@ MonoBehaviour:
           m_StringArgument: Jog R No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -6377,11 +6294,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566219793}
   m_CullTransparentMesh: 0
---- !u!95 &1611797987 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-  m_PrefabInstance: {fileID: 2039996608}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1617040915
 GameObject:
   m_ObjectHideFlags: 0
@@ -7009,7 +6921,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -7021,7 +6933,7 @@ MonoBehaviour:
           m_StringArgument: Jog R Stop No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -7154,7 +7066,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -7166,7 +7078,7 @@ MonoBehaviour:
           m_StringArgument: Jump Shot
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -7299,7 +7211,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -7311,7 +7223,7 @@ MonoBehaviour:
           m_StringArgument: Standing Idle With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -7444,7 +7356,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -7456,7 +7368,7 @@ MonoBehaviour:
           m_StringArgument: Idle With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -7668,7 +7580,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -7680,7 +7592,7 @@ MonoBehaviour:
           m_StringArgument: Jog R Start With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -8054,7 +7966,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -8066,7 +7978,7 @@ MonoBehaviour:
           m_StringArgument: Jog BWD With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -8436,7 +8348,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -8448,7 +8360,7 @@ MonoBehaviour:
           m_StringArgument: Chest Pass Right
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -8670,7 +8582,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1e-45, z: 2.347e-42, w: 6e-44}
+  m_BoundingSphereOverride: {x: 0, y: 1e-45, z: 3.805e-42, w: 6e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -8772,7 +8684,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -8784,7 +8696,7 @@ MonoBehaviour:
           m_StringArgument: Jog L Stop With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -8917,7 +8829,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -8929,7 +8841,7 @@ MonoBehaviour:
           m_StringArgument: Jog L Start With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -8979,89 +8891,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025365285}
   m_CullTransparentMesh: 0
---- !u!1001 &2039996608
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_Name
-      value: SK_Male_Basket_Player_T-Pose
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866666021909216657, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f485bf9309f5a8c4794f73533f152aa3, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
---- !u!1 &2039996609 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
-  m_PrefabInstance: {fileID: 2039996608}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2039996610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2039996609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c3ea61f6bc3ac2499fdaca545db64c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
 --- !u!1 &2096624593
 GameObject:
   m_ObjectHideFlags: 0
@@ -9224,7 +9053,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -9236,7 +9065,7 @@ MonoBehaviour:
           m_StringArgument: Jog FWD No Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -9369,7 +9198,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611797987}
+      - m_Target: {fileID: 5866666019872267601}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -9381,7 +9210,7 @@ MonoBehaviour:
           m_StringArgument: Jog FWD With Ball
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 156302920}
+      - m_Target: {fileID: 5866666021755044822}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -9510,3 +9339,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142573539}
   m_CullTransparentMesh: 0
+--- !u!4 &543450651693844267 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+  m_PrefabInstance: {fileID: 3502624648407660111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3502624648407660111
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348994405806861278, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+--- !u!95 &5866666019872267601 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7057500323351030558, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+  m_PrefabInstance: {fileID: 3502624648407660111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5866666021755044822 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7057500322541729177, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+  m_PrefabInstance: {fileID: 3502624648407660111}
+  m_PrefabAsset: {fileID: 0}
