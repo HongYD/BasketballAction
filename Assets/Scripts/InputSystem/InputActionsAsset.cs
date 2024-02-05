@@ -35,6 +35,24 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2e023c6-2656-4fef-8ebc-c0b1edda0f5d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pass"",
+                    ""type"": ""Button"",
+                    ""id"": ""db63c9ac-fac6-4d7a-931e-43a405a9060e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -92,6 +110,28 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bd77987-af61-4a89-acbf-851addc8f670"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": ""Hold(duration=0.6)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41b5eb30-6dcb-45f0-8132-c8c2c5bdd918"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": ""Hold(duration=0.6)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pass"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -124,6 +164,8 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
         // PlayerControls
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
         m_PlayerControls_Move = m_PlayerControls.FindAction("Move", throwIfNotFound: true);
+        m_PlayerControls_Shoot = m_PlayerControls.FindAction("Shoot", throwIfNotFound: true);
+        m_PlayerControls_Pass = m_PlayerControls.FindAction("Pass", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -184,11 +226,15 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerControls;
     private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
     private readonly InputAction m_PlayerControls_Move;
+    private readonly InputAction m_PlayerControls_Shoot;
+    private readonly InputAction m_PlayerControls_Pass;
     public struct PlayerControlsActions
     {
         private @InputActionsAsset m_Wrapper;
         public PlayerControlsActions(@InputActionsAsset wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerControls_Move;
+        public InputAction @Shoot => m_Wrapper.m_PlayerControls_Shoot;
+        public InputAction @Pass => m_Wrapper.m_PlayerControls_Pass;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -201,6 +247,12 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMove;
+                @Shoot.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnShoot;
+                @Pass.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPass;
+                @Pass.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPass;
+                @Pass.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPass;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -208,6 +260,12 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+                @Pass.started += instance.OnPass;
+                @Pass.performed += instance.OnPass;
+                @Pass.canceled += instance.OnPass;
             }
         }
     }
@@ -233,5 +291,7 @@ public partial class @InputActionsAsset : IInputActionCollection2, IDisposable
     public interface IPlayerControlsActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnPass(InputAction.CallbackContext context);
     }
 }

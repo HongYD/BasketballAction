@@ -851,7 +851,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 8972c2371174d274cb47af567a136900, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 03863a88569fde84da20b20530d792c8, type: 2}
+      objectReference: {fileID: 9100000, guid: aa74d608b3361ba45a1b81d1f4f0c6f8, type: 2}
     - target: {fileID: 5866666021909216657, guid: 8972c2371174d274cb47af567a136900, type: 3}
       propertyPath: m_CullingMode
       value: 0
@@ -5987,7 +5987,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5904e-41, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -8670,7 +8670,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 11.557892, z: 4.85e-43, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1e-45, z: 2.347e-42, w: 6e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -9041,7 +9041,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 73ac7610766b96e45a15752292ad391a, type: 2}
+      objectReference: {fileID: 9100000, guid: f485bf9309f5a8c4794f73533f152aa3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67b364db3d0785a459c8aa0fb1e6af6e, type: 3}
 --- !u!1 &2039996609 stripped

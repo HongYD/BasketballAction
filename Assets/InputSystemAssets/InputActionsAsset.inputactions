@@ -13,6 +13,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "c2e023c6-2656-4fef-8ebc-c0b1edda0f5d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pass",
+                    "type": "Button",
+                    "id": "db63c9ac-fac6-4d7a-931e-43a405a9060e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -70,6 +88,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "6bd77987-af61-4a89-acbf-851addc8f670",
+                    "path": "<Keyboard>/j",
+                    "interactions": "Hold(duration=0.6)",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41b5eb30-6dcb-45f0-8132-c8c2c5bdd918",
+                    "path": "<Keyboard>/k",
+                    "interactions": "Hold(duration=0.6)",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Pass",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
