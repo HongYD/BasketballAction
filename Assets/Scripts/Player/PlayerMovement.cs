@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum PlayerSpeedLevel
+{
+    Idel,
+    Jog,
+    Normal,
+}
+
+
 public class PlayerMovement : MonoBehaviour
 {
     InputActionsAsset playerMovement;
