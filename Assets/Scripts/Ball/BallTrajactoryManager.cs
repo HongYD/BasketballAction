@@ -7,7 +7,7 @@ public static class BallTrajactoryManager
     public static float gravityF = -9.8f;
     public static float muzzleV = 10.0f;
     public static float frameRate = 1.0f / 30.0f;
-    public static float speedOffset = 0.7f;
+    public static float speedOffset = 0.3f;
 
     public static List<Vector3> CalculateBallTrajactory(Vector3 start, Vector3 end)
     {
