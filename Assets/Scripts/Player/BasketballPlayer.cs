@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public enum PlayerState
 {
@@ -16,8 +15,14 @@ public enum PlayerState
 public struct PlayerSpeedLevel
 {
     public const float Idle = 0;
-    public const float Jog = 1.0f;
+    public const float Jog = 2.0f;
     public const float Nomal = 3.0f;
+}
+
+public struct PlayerSpeedDeadZone
+{
+    public const float JogDeadZone = 0.1f;
+    public const float NormalDeadZone = 0.3f;
 }
 
 public class BasketballPlayer : PlayerAgent
@@ -32,8 +37,8 @@ public class BasketballPlayer : PlayerAgent
     private Vector2 moveDir;
 
 
-    // Start is called before the first frame update
 
+    // Start is called before the first frame update
     void Start()
     {
         state = PlayerState.Idle;
@@ -42,11 +47,30 @@ public class BasketballPlayer : PlayerAgent
 
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Move, OnPlayerMove);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.MoveCancled, OnPlayerMoveCancle);
+        EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Rececive, OnPlayerReceive);
+        EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Pass, OnPlayerPass);
+        EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Shoot, OnPlayerShoot);
+    }
+
+    private void OnPlayerShoot(object[] param)
+    {
+        state = PlayerState.Shoot;
+        playerAnimator.SetBool("ShootBall", true);
+    }
+
+    private void OnPlayerPass(object[] param)
+    {
+
+    }
+
+    private void OnPlayerReceive(object[] param)
+    {
+        state = PlayerState.Rececive;
+        playerAnimator.SetTrigger("ReceiveBall");
     }
 
     private void OnPlayerMoveCancle(object[] param)
     {
-        InputAction.CallbackContext context = (InputAction.CallbackContext)param[0];
         moveDir = Vector2.zero;
         playerAnimator.SetFloat("MoveX", moveDir.x);
         playerAnimator.SetFloat("MoveY", moveDir.y);
@@ -56,14 +80,33 @@ public class BasketballPlayer : PlayerAgent
     private void OnPlayerMove(object[] param)
     {
         state = PlayerState.Move;
-        InputAction.CallbackContext context = (InputAction.CallbackContext)param[0];
+        moveDir = (Vector2)param[0];
         playerAnimator.SetBool("IsJogWithBall", true);
-        moveDir = context.ReadValue<Vector2>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void FixedUpdate()
+    {
+        if (Mathf.Abs(moveDir.x) > PlayerSpeedDeadZone.JogDeadZone)
+        {
+            playerSpeed = PlayerSpeedLevel.Jog;
+        }
+        else if (Mathf.Abs(moveDir.y) > PlayerSpeedDeadZone.NormalDeadZone)
+        {
+            playerSpeed = PlayerSpeedLevel.Nomal;
+        }
+        else
+        {
+            playerSpeed = PlayerSpeedLevel.Idle;
+        }
+        Vector3 movement = new Vector3(moveDir.x, 0.0f, moveDir.y) * playerSpeed * Time.deltaTime;
+        playerAnimator.SetFloat("MoveX", moveDir.x);
+        playerAnimator.SetFloat("MoveY", moveDir.y);
+        transform.Translate(movement, Space.World);
     }
 }
