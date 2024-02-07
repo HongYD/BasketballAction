@@ -19,7 +19,16 @@ public class BallController : MonoBehaviour
     [SerializeField]
     private Vector2 ballMoveDir;
     private Animator ballAnimator;
+    [SerializeField]
     private GameObject flyBall;
+    [SerializeField]
+    private GameObject ballFlyTargetF;
+    [SerializeField]
+    private GameObject ballFlyTargetB;
+    [SerializeField]
+    private List<Vector3> trajectory;
+    private int curIndex;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +36,7 @@ public class BallController : MonoBehaviour
         ballState = BallState.Animate;
         ballAnimator = GetComponent<Animator>();
         flyBall = GameObject.Find("basketball");
-
+        curIndex = 0;
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Move, OnPlayerMove);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.MoveCancled, OnPlayerMoveCancle);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Rececive, OnPlayerReceive);
@@ -38,6 +47,8 @@ public class BallController : MonoBehaviour
     private void OnPlayerShoot(object[] param)
     {
         ballAnimator.SetBool("ShootBall", true);
+        trajectory.Clear();
+        trajectory = BallTrajactoryManager.CalculateBallTrajactory(this.transform.position, ballFlyTargetF.transform.position);
     }
 
     private void OnPlayerPass(object[] param)
@@ -74,5 +85,14 @@ public class BallController : MonoBehaviour
     {
         ballAnimator.SetFloat("BallMoveX", ballMoveDir.x);
         ballAnimator.SetFloat("BallMoveY", ballMoveDir.y);
+        if (curIndex < trajectory.Count - 1)
+        {
+            flyBall.transform.position = trajectory[curIndex];
+            curIndex++;
+        }
+        else
+        {
+            trajectory.Clear();
+        }
     }
 }

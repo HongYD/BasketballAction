@@ -34,7 +34,13 @@ public class BasketballPlayer : PlayerAgent
     [SerializeField]
     private float playerSpeed;
     [SerializeField]
+    private float angleSpeed;
+    [SerializeField]
     private Vector2 moveDir;
+    [SerializeField]
+    private GameObject hoopF;
+    [SerializeField]
+    private GameObject hoopB;
 
 
 
@@ -108,5 +114,15 @@ public class BasketballPlayer : PlayerAgent
         playerAnimator.SetFloat("MoveX", moveDir.x);
         playerAnimator.SetFloat("MoveY", moveDir.y);
         transform.Translate(movement, Space.World);
+
+        RotatePlayer();
+    }
+
+    private void RotatePlayer()
+    {
+        Vector3 lookDir = new Vector3(moveDir.x, 0, moveDir.y);
+        Quaternion rot = Quaternion.LookRotation(lookDir, transform.up);
+        Quaternion r = Quaternion.Lerp(transform.rotation, rot, angleSpeed * Time.deltaTime);
+        transform.rotation = r;
     }
 }
