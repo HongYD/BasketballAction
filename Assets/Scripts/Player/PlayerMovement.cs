@@ -4,14 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public struct PlayerSpeedLevel
-{
-    public const float Idle = 0;
-    public const float Jog = 1.0f;
-    public const float Nomal = 3.0f;
-}
-
-
 public class PlayerMovement/* : MonoBehaviour*/
 {
     //InputActionsAsset playerMovement;
