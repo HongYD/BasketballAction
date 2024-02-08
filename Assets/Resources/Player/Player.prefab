@@ -1276,6 +1276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3968071434524176355}
   - component: {fileID: 7057500322541729177}
+  - component: {fileID: 185773052}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -1318,6 +1319,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &185773052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348994405542163801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aca30d847f632348b458daeef578a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballState: 0
+  ballMoveDir: {x: 0, y: 0}
+  flyBall: {fileID: 0}
+  ballFlyTargetF: {fileID: 0}
+  ballFlyTargetB: {fileID: 0}
+  trajectory: []
 --- !u!1 &4348994405806861278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,7 +1415,10 @@ MonoBehaviour:
   state: 0
   playerAnimator: {fileID: 0}
   playerSpeed: 0
+  angleSpeed: 5
   moveDir: {x: 0, y: 0}
+  hoopF: {fileID: 0}
+  hoopB: {fileID: 0}
 --- !u!114 &1126150660
 MonoBehaviour:
   m_ObjectHideFlags: 0

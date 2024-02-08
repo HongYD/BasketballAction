@@ -122,7 +122,6 @@ public class BasketballPlayer : PlayerAgent
     {
         Vector3 lookDir = new Vector3(moveDir.x, 0, moveDir.y);
         Quaternion rot = Quaternion.LookRotation(lookDir, transform.up);
-        Quaternion r = Quaternion.Slerp(transform.rotation, rot, angleSpeed * Time.deltaTime);
-        transform.rotation = r;
+        transform.rotation = Quaternion.Slerp(transform.rotation, rot, angleSpeed * Time.deltaTime);
     }
 }

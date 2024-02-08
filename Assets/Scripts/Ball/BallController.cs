@@ -27,16 +27,25 @@ public class BallController : MonoBehaviour
     private GameObject ballFlyTargetB;
     [SerializeField]
     private List<Vector3> trajectory;
+    [SerializeField]
+    GameObject visualizedBall;
+    [SerializeField]
+    GameObject boneBall;
     private int curIndex;
+    private Rigidbody rb;
 
 
     // Start is called before the first frame update
     void Start()
     {
         ballState = BallState.Animate;
+        visualizedBall = transform.GetChild(0).gameObject;
+        boneBall = transform.GetChild(1).gameObject;
+        rb = flyBall.GetComponent<Rigidbody>();
         ballAnimator = GetComponent<Animator>();
         flyBall = GameObject.Find("basketball");
         curIndex = 0;
+        flyBall.SetActive(false);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Move, OnPlayerMove);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.MoveCancled, OnPlayerMoveCancle);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Rececive, OnPlayerReceive);
@@ -46,9 +55,8 @@ public class BallController : MonoBehaviour
 
     private void OnPlayerShoot(object[] param)
     {
+        rb.isKinematic = true;
         ballAnimator.SetBool("ShootBall", true);
-        trajectory.Clear();
-        trajectory = BallTrajactoryManager.CalculateBallTrajactory(this.transform.position, ballFlyTargetF.transform.position);
     }
 
     private void OnPlayerPass(object[] param)
@@ -78,7 +86,10 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(ballState == BallState.FreeFly)
+        {
+            rb.isKinematic = false;
+        }
     }
 
     private void FixedUpdate()
@@ -87,12 +98,23 @@ public class BallController : MonoBehaviour
         ballAnimator.SetFloat("BallMoveY", ballMoveDir.y);
         if (curIndex < trajectory.Count - 1)
         {
+
             flyBall.transform.position = trajectory[curIndex];
             curIndex++;
         }
         else
         {
+            ballState = BallState.FreeFly;
             trajectory.Clear();
         }
+    }
+
+    public void OnBallShooting()
+    {
+        flyBall.SetActive(true);
+        visualizedBall.SetActive(false);
+        flyBall.transform.position = boneBall.transform.position;
+        trajectory.Clear();
+        trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, ballFlyTargetF.transform.position);
     }
 }

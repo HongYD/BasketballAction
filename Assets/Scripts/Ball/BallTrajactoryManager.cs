@@ -5,15 +5,14 @@ using UnityEngine;
 public static class BallTrajactoryManager
 {
     public static float gravityF = -9.8f;
-    public static float muzzleV = 10.0f;
+    public static float muzzleV = 8.0f;
     public static float frameRate = 1.0f / 30.0f;
-    public static float speedOffset = 0.3f;
+    public static float speedOffset = 0.5f;
 
     public static List<Vector3> CalculateBallTrajactory(Vector3 start, Vector3 end)
     {
         List<Vector3> traj = new List<Vector3>();
         float time = 0;
-        start = start + new Vector3(0, 1.8f, 0);
         Vector3 calcDir = CalculateOutDirection(start, end, out time);
         float t = 0;
         Vector3 gravity = new Vector3(0, gravityF, 0);
