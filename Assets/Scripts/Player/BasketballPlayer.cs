@@ -25,6 +25,11 @@ public struct PlayerSpeedDeadZone
     public const float NormalDeadZone = 0.3f;
 }
 
+public struct PlayerAnimationData
+{
+    public const int shootEvent = 16;
+}
+
 public class BasketballPlayer : PlayerAgent
 {
     [SerializeField]
@@ -36,6 +41,8 @@ public class BasketballPlayer : PlayerAgent
     [SerializeField]
     private float angleSpeed;
     [SerializeField]
+    private float JumpAngleSpeed;
+    [SerializeField]
     private Vector2 moveDir;
     [SerializeField]
     private Vector2 faceDir;
@@ -43,6 +50,8 @@ public class BasketballPlayer : PlayerAgent
     private GameObject hoopF;
     [SerializeField]
     private GameObject hoopB;
+    private int shootEventFrameCount;
+    private float shootAngleDiff;
 
 
 
@@ -52,6 +61,7 @@ public class BasketballPlayer : PlayerAgent
         state = PlayerState.Idle;
         playerSpeed = PlayerSpeedLevel.Idle;
         playerAnimator = this.GetComponent<Animator>();
+        shootEventFrameCount = 0;
 
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Move, OnPlayerMove);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.MoveCancled, OnPlayerMoveCancle);
@@ -100,10 +110,37 @@ public class BasketballPlayer : PlayerAgent
     // Update is called once per frame
     void Update()
     {
-
+        switch (state)
+        {
+            case PlayerState.Idle:
+                Idle();
+                break;
+            case PlayerState.Move:
+                Move();
+                break;
+            case PlayerState.Shoot:
+                Shoot();
+                break;
+            case PlayerState.Pass:
+                Pass();
+                break;
+            case PlayerState.Rececive:
+                Rececive();
+                break;
+        }
     }
 
     void FixedUpdate()
+    {
+
+    }
+
+    private void Idle()
+    {
+
+    }
+
+    private void Move()
     {
         if (Mathf.Abs(moveDir.x) > PlayerSpeedDeadZone.JogDeadZone)
         {
@@ -121,8 +158,27 @@ public class BasketballPlayer : PlayerAgent
         playerAnimator.SetFloat("MoveX", moveDir.x);
         playerAnimator.SetFloat("MoveY", moveDir.y);
         transform.Translate(movement, Space.World);
-
         RotatePlayer();
+    }
+
+    private void Shoot()
+    {
+        Vector2 hookDir = (hoopF.transform.position - transform.position).ToVector2().normalized;
+        float rotY = Quaternion.LookRotation(new Vector3(hookDir.x, 0, hookDir.y), transform.up).eulerAngles.y;
+        float curY = this.transform.rotation.eulerAngles.y;
+        shootAngleDiff = rotY - curY;
+        StartCoroutine(FixPlayerRotateOnShoot());
+        state = PlayerState.Idle;
+    }
+
+    private void Pass()
+    {
+
+    }
+
+    private void Rececive()
+    {
+        
     }
 
     private void RotatePlayer()
@@ -132,11 +188,18 @@ public class BasketballPlayer : PlayerAgent
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, angleSpeed * Time.deltaTime);
     }
 
-    private void FixPlayerRotateOnShoot()
+    private IEnumerator FixPlayerRotateOnShoot()
     {
-        Vector2 hookDir = (hoopF.transform.position - transform.position).ToVector2().normalized;
-        Quaternion rot = Quaternion.LookRotation(new Vector3(hookDir.x,0,hookDir.y), transform.up);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rot, angleSpeed * Time.deltaTime);
-        //yield return StartCoroutine(WaitForFrames.Frames(2));
+        float absDiff = Mathf.Abs(shootAngleDiff);
+        while (absDiff > 0)
+        {
+            float rotSpeed = shootAngleDiff / (float)PlayerAnimationData.shootEvent;
+            transform.Rotate(new Vector3(0, rotSpeed, 0));
+            absDiff -= Mathf.Abs(rotSpeed);
+            yield return StartCoroutine(WaitForFrames.Frames(1));
+        }
+        shootAngleDiff = 0;
+        Debug.Log("–≠≥ÃFixPlayerRotateOnShoot“—Õ£÷π");
+        StopCoroutine(FixPlayerRotateOnShoot());
     }
 }

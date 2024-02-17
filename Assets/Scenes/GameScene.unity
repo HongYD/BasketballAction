@@ -499,6 +499,10 @@ PrefabInstance:
       propertyPath: hoopF
       value: 
       objectReference: {fileID: 1229772626}
+    - target: {fileID: 1126150659, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: JumpAngleSpeed
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
       propertyPath: m_RootOrder
       value: 5
