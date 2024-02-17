@@ -61,11 +61,12 @@ public class BallController : MonoBehaviour
 
     private void OnPlayerPass(object[] param)
     {
-        
+        ballState = BallState.PassFly;
     }
 
     private void OnPlayerReceive(object[] param)
     {
+        ballState = BallState.ReceiveFly;
         flyBall.SetActive(false);
         visualizedBall.SetActive(true);
         ballAnimator.SetTrigger("ReceiveBall");
@@ -81,6 +82,7 @@ public class BallController : MonoBehaviour
 
     private void OnPlayerMove(object[] param)
     {
+        ballState = BallState.Animate;
         ballAnimator.SetBool("IsJog", true);
         ballMoveDir = (Vector2)param[0];
     }
@@ -88,21 +90,33 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-
-
-
-        if(ballState == BallState.FreeFly)
+        switch (ballState)
         {
-            rb.isKinematic = false;
+            case BallState.Animate:
+                Animate();
+                break;
+            case BallState.ShootFly:
+                ShootFly();
+                break;
+            case BallState.PassFly:
+                break;
+            case BallState.ReceiveFly:
+                ReceiveFly();
+                break;
+            case BallState.FreeFly:
+                FreeFly();
+                break;
         }
     }
 
-    private void FixedUpdate()
+    private void Animate()
     {
         ballAnimator.SetFloat("BallMoveX", ballMoveDir.x);
         ballAnimator.SetFloat("BallMoveY", ballMoveDir.y);
+    }
+
+    private void ShootFly()
+    {
         if (curIndex < trajectory.Count - 1)
         {
 
@@ -112,12 +126,35 @@ public class BallController : MonoBehaviour
         else
         {
             ballState = BallState.FreeFly;
+            curIndex = 0;
             trajectory.Clear();
         }
     }
 
+    private void FreeFly()
+    {
+        if (ballState == BallState.FreeFly)
+        {
+            if (rb.isKinematic)
+            {
+                rb.isKinematic = false;
+            }
+        }
+    }
+
+    private void ReceiveFly()
+    {
+        ballState = BallState.Animate;
+    }
+
+    private void FixedUpdate()
+    {
+
+    }
+
     public void OnBallShooting()
     {
+        ballState = BallState.ShootFly;
         flyBall.SetActive(true);
         visualizedBall.SetActive(false);
         flyBall.transform.position = boneBall.transform.position;
