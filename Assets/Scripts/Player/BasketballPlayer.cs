@@ -38,6 +38,8 @@ public class BasketballPlayer : PlayerAgent
     [SerializeField]
     private Vector2 moveDir;
     [SerializeField]
+    private Vector2 faceDir;
+    [SerializeField]
     private GameObject hoopF;
     [SerializeField]
     private GameObject hoopB;
@@ -62,6 +64,7 @@ public class BasketballPlayer : PlayerAgent
     {
         state = PlayerState.Shoot;
         playerAnimator.SetBool("ShootBall", true);
+        FixPlayerRotateOnShoot();
     }
 
     private void OnPlayerPass(object[] param)
@@ -87,13 +90,17 @@ public class BasketballPlayer : PlayerAgent
     {
         state = PlayerState.Move;
         moveDir = (Vector2)param[0];
+        if (moveDir != Vector2.zero)
+        {
+            faceDir = moveDir;
+        }
         playerAnimator.SetBool("IsJogWithBall", true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
@@ -120,8 +127,16 @@ public class BasketballPlayer : PlayerAgent
 
     private void RotatePlayer()
     {
-        Vector3 lookDir = new Vector3(moveDir.x, 0, moveDir.y);
+        Vector3 lookDir = new Vector3(faceDir.x, 0, faceDir.y);
         Quaternion rot = Quaternion.LookRotation(lookDir, transform.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, angleSpeed * Time.deltaTime);
+    }
+
+    private void FixPlayerRotateOnShoot()
+    {
+        Vector2 hookDir = (hoopF.transform.position - transform.position).ToVector2().normalized;
+        Quaternion rot = Quaternion.LookRotation(new Vector3(hookDir.x,0,hookDir.y), transform.up);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rot, angleSpeed * Time.deltaTime);
+        //yield return StartCoroutine(WaitForFrames.Frames(2));
     }
 }
