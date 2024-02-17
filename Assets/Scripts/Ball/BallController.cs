@@ -66,6 +66,8 @@ public class BallController : MonoBehaviour
 
     private void OnPlayerReceive(object[] param)
     {
+        flyBall.SetActive(false);
+        visualizedBall.SetActive(true);
         ballAnimator.SetTrigger("ReceiveBall");
     }
 
@@ -74,12 +76,12 @@ public class BallController : MonoBehaviour
         ballMoveDir = Vector2.zero;
         ballAnimator.SetFloat("BallMoveX", ballMoveDir.x);
         ballAnimator.SetFloat("BallMoveY", ballMoveDir.y);
-        ballAnimator.SetBool("IsJogWithBall", false);
+        ballAnimator.SetBool("IsJog", false);
     }
 
     private void OnPlayerMove(object[] param)
     {
-        ballAnimator.SetBool("IsJogWithBall", true);
+        ballAnimator.SetBool("IsJog", true);
         ballMoveDir = (Vector2)param[0];
     }
 

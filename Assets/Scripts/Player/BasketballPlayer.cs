@@ -91,7 +91,7 @@ public class BasketballPlayer : PlayerAgent
         moveDir = Vector2.zero;
         playerAnimator.SetFloat("MoveX", moveDir.x);
         playerAnimator.SetFloat("MoveY", moveDir.y);
-        playerAnimator.SetBool("IsJogWithBall", false);
+        playerAnimator.SetBool("IsJog", false);
     }
 
     private void OnPlayerMove(object[] param)
@@ -102,7 +102,7 @@ public class BasketballPlayer : PlayerAgent
         {
             faceDir = moveDir;
         }
-        playerAnimator.SetBool("IsJogWithBall", true);
+        playerAnimator.SetBool("IsJog", true);
     }
 
     // Update is called once per frame
