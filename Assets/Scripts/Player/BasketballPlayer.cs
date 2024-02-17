@@ -50,7 +50,6 @@ public class BasketballPlayer : PlayerAgent
     private GameObject hoopF;
     [SerializeField]
     private GameObject hoopB;
-    private int shootEventFrameCount;
     private float shootAngleDiff;
 
 
@@ -61,7 +60,6 @@ public class BasketballPlayer : PlayerAgent
         state = PlayerState.Idle;
         playerSpeed = PlayerSpeedLevel.Idle;
         playerAnimator = this.GetComponent<Animator>();
-        shootEventFrameCount = 0;
 
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Move, OnPlayerMove);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.MoveCancled, OnPlayerMoveCancle);
@@ -199,7 +197,6 @@ public class BasketballPlayer : PlayerAgent
             yield return StartCoroutine(WaitForFrames.Frames(1));
         }
         shootAngleDiff = 0;
-        Debug.Log("–≠≥ÃFixPlayerRotateOnShoot“—Õ£÷π");
         StopCoroutine(FixPlayerRotateOnShoot());
     }
 }
