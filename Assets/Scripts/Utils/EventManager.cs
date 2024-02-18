@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public enum AnimationEvent
 {
     PickUpBallEvent,
+    PickUpBallEndEvent,
 }
 
 public enum PlayerInputEvent

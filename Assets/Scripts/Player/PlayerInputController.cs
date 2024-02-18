@@ -62,17 +62,6 @@ public class PlayerInputController : MonoBehaviour
         PlayerInputAction.PlayerControls.Enable();
     }
 
-    //void FixedUpdate()
-    //{
-    //    Vector3 movement = new Vector3(move.x, 0.0f, move.y) * speed * Time.deltaTime;
-    //    playerAnimator.SetFloat("MoveX", move.x);
-    //    playerAnimator.SetFloat("MoveY", move.y);
-
-    //    ballAnimator.SetFloat("BallMoveX", move.x);
-    //    ballAnimator.SetFloat("BallMoveY", move.y);
-    //    transform.Translate(movement, Space.World);
-    //}
-
     private void OnDisable()
     {
         PlayerInputAction.PlayerControls.Disable();

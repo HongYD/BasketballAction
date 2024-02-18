@@ -503,6 +503,14 @@ PrefabInstance:
       propertyPath: hoopF
       value: 
       objectReference: {fileID: 1229772626}
+    - target: {fileID: 1126150659, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: flyBall
+      value: 
+      objectReference: {fileID: 919132149149262836}
+    - target: {fileID: 1607276479780357001, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_Weight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3968071435342524772, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -551,6 +559,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5750647883569167705, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 18.066269
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750647883569167705, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 125.49614
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750647883569167705, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 120.25113
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
 --- !u!4 &1126150657 stripped
@@ -586,7 +606,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8113208, g: 0.74549663, b: 0.74549663, a: 1}
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.42
   m_Range: 10
   m_SpotAngle: 30

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public enum PlayerState
 {
@@ -53,7 +54,16 @@ public class BasketballPlayer : PlayerAgent
     private GameObject hoopB;
     private float shootAngleDiff;
 
-
+    [SerializeField]
+    private Rig rig;
+    [SerializeField]
+    private Transform rightHandTarget;
+    [SerializeField]
+    private Transform rightHandTransform;
+    [Range(0f, 1f)]
+    private float targetWeight;
+    [SerializeField]
+    private GameObject flyBall;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +71,8 @@ public class BasketballPlayer : PlayerAgent
         state = PlayerState.Idle;
         playerSpeed = PlayerSpeedLevel.Idle;
         playerAnimator = this.GetComponent<Animator>();
+        rig = this.GetComponentInChildren<Rig>();
+        targetWeight = 0;
 
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Move, OnPlayerMove);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.MoveCancled, OnPlayerMoveCancle);
@@ -72,8 +84,12 @@ public class BasketballPlayer : PlayerAgent
 
     private void OnPickUpBall(object[] param)
     {
-        state = PlayerState.PickUp;
-        playerAnimator.SetTrigger("PickUpBall");
+        string name = (string)param[0];
+        if (name == gameObject.name)
+        {
+            state = PlayerState.PickUp;
+            playerAnimator.SetTrigger("PickUpBall");
+        }
     }
 
     private void OnPlayerShoot(object[] param)
@@ -205,7 +221,6 @@ public class BasketballPlayer : PlayerAgent
             }
             else
             {
-                Debug.Break();
                 shootAngleDiff = (360.0f - Mathf.Abs(shootAngleDiff));
                 absDiff = Mathf.Abs(shootAngleDiff);
             }
@@ -219,5 +234,18 @@ public class BasketballPlayer : PlayerAgent
         }
         shootAngleDiff = 0;
         StopCoroutine(FixPlayerRotateOnShoot());
+    }
+
+    public void OnPickUpEvent()
+    {
+        targetWeight = 1f;
+        rig.weight = targetWeight;
+        flyBall.transform.position = rightHandTransform.position;
+        flyBall.transform.SetParent(rightHandTransform, true);
+    }
+
+    public void OnPickUpEndEvent()
+    {
+        EventManager<AnimationEvent>.instance.TriggerEvent(AnimationEvent.PickUpBallEndEvent);
     }
 }

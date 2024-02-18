@@ -52,6 +52,20 @@ public class BallController : MonoBehaviour
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Rececive, OnPlayerReceive);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Pass, OnPlayerPass);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Shoot, OnPlayerShoot);
+        EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.PickUpBallEvent, OnPickUpBall);
+        EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.PickUpBallEndEvent, OnPickUpBallEnd);
+    }
+
+    private void OnPickUpBallEnd(object[] param)
+    {
+        ballState = BallState.Animate;
+        flyBall.SetActive(false);
+        visualizedBall.SetActive(true);
+    }
+
+    private void OnPickUpBall(object[] param)
+    {
+        rb.isKinematic = true;
     }
 
     private void OnPlayerShoot(object[] param)
@@ -164,13 +178,5 @@ public class BallController : MonoBehaviour
         flyBall.transform.position = boneBall.transform.position;
         trajectory.Clear();
         trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, ballFlyTargetF.transform.position);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            EventManager<AnimationEvent>.instance.TriggerEvent(AnimationEvent.PickUpBallEvent);
-        }
     }
 }
