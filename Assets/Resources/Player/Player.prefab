@@ -1337,6 +1337,8 @@ MonoBehaviour:
   ballFlyTargetF: {fileID: 0}
   ballFlyTargetB: {fileID: 0}
   trajectory: []
+  visualizedBall: {fileID: 0}
+  boneBall: {fileID: 0}
 --- !u!1 &4348994405806861278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,9 +1351,10 @@ GameObject:
   - component: {fileID: 7057500323351030558}
   - component: {fileID: 1126150659}
   - component: {fileID: 1126150660}
+  - component: {fileID: 6704981526417798555}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1416,7 +1419,9 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   playerSpeed: 0
   angleSpeed: 5
+  JumpAngleSpeed: 45
   moveDir: {x: 0, y: 0}
+  faceDir: {x: 0, y: 0}
   hoopF: {fileID: 0}
   hoopB: {fileID: 0}
 --- !u!114 &1126150660
@@ -1431,6 +1436,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef03f8784eb1084f872657ccf257990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &6704981526417798555
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348994405806861278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.24983433
+  m_Height: 2.0368314
+  m_Direction: 1
+  m_Center: {x: 0.006028086, y: 1.006691, z: 0.0030139983}
 --- !u!1 &4372983001241151826
 GameObject:
   m_ObjectHideFlags: 0

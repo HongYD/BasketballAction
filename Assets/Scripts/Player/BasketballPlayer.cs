@@ -10,6 +10,7 @@ public enum PlayerState
     Shoot,
     Pass,
     Rececive,
+    PickUp,
 }
 
 public struct PlayerSpeedLevel
@@ -66,13 +67,19 @@ public class BasketballPlayer : PlayerAgent
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Rececive, OnPlayerReceive);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Pass, OnPlayerPass);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Shoot, OnPlayerShoot);
+        EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.PickUpBallEvent, OnPickUpBall);
+    }
+
+    private void OnPickUpBall(object[] param)
+    {
+        state = PlayerState.PickUp;
+        playerAnimator.SetTrigger("PickUpBall");
     }
 
     private void OnPlayerShoot(object[] param)
     {
         state = PlayerState.Shoot;
-        playerAnimator.SetBool("ShootBall", true);
-        FixPlayerRotateOnShoot();
+        playerAnimator.SetTrigger("ShootBall");
     }
 
     private void OnPlayerPass(object[] param)
@@ -189,12 +196,26 @@ public class BasketballPlayer : PlayerAgent
     private IEnumerator FixPlayerRotateOnShoot()
     {
         float absDiff = Mathf.Abs(shootAngleDiff);
+        if (absDiff > 180.0f)
+        {
+            if (shootAngleDiff > 0)
+            {
+                shootAngleDiff = (shootAngleDiff-360.0f);
+                absDiff = Mathf.Abs(shootAngleDiff);
+            }
+            else
+            {
+                Debug.Break();
+                shootAngleDiff = (360.0f - Mathf.Abs(shootAngleDiff));
+                absDiff = Mathf.Abs(shootAngleDiff);
+            }
+        }
         while (absDiff > 0)
         {
             float rotSpeed = shootAngleDiff / (float)PlayerAnimationData.shootEvent;
             transform.Rotate(new Vector3(0, rotSpeed, 0));
             absDiff -= Mathf.Abs(rotSpeed);
-            yield return StartCoroutine(WaitForFrames.Frames(1));
+            yield return null;
         }
         shootAngleDiff = 0;
         StopCoroutine(FixPlayerRotateOnShoot());

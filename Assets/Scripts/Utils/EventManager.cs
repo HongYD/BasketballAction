@@ -2,6 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum AnimationEvent
+{
+    PickUpBallEvent,
+}
+
 public enum PlayerInputEvent
 {
     Move=0,

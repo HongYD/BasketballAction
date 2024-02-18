@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum BallState
 {
     Animate,
@@ -56,7 +57,7 @@ public class BallController : MonoBehaviour
     private void OnPlayerShoot(object[] param)
     {
         rb.isKinematic = true;
-        ballAnimator.SetBool("ShootBall", true);
+        ballAnimator.SetTrigger("ShootBall");
     }
 
     private void OnPlayerPass(object[] param)
@@ -82,7 +83,10 @@ public class BallController : MonoBehaviour
 
     private void OnPlayerMove(object[] param)
     {
-        ballState = BallState.Animate;
+        if (ballState != BallState.ShootFly && ballState != BallState.FreeFly)
+        {
+            ballState = BallState.Animate;
+        }
         ballAnimator.SetBool("IsJog", true);
         ballMoveDir = (Vector2)param[0];
     }
@@ -160,5 +164,13 @@ public class BallController : MonoBehaviour
         flyBall.transform.position = boneBall.transform.position;
         trajectory.Clear();
         trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, ballFlyTargetF.transform.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            EventManager<AnimationEvent>.instance.TriggerEvent(AnimationEvent.PickUpBallEvent);
+        }
     }
 }
