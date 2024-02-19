@@ -6,8 +6,7 @@ using UnityEngine;
 
 public enum BallState
 {
-    IdleFly=0,
-    MoveFly,
+    MoveFly=0,
     ShootFly,
     PassFly,
     ReceiveFly,
@@ -42,7 +41,7 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ballState = BallState.IdleFly;
+        ballState = BallState.MoveFly;
         visualizedBall = transform.GetChild(0).gameObject;
         boneBall = transform.GetChild(1).gameObject;
         rb = flyBall.GetComponent<Rigidbody>();
@@ -68,7 +67,7 @@ public class BallController : MonoBehaviour
 
     private void OnPickUpBall(object[] param)
     {
-        ballState = BallState.IdleFly;
+        ballState = BallState.MoveFly;
         rb.isKinematic = true;
         ballAnimator.SetTrigger("PickUpBall");
     }
