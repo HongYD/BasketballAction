@@ -2,18 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TrajectoryType
+{
+    CloseShoot,
+    MiddleShoot,
+    LongShoot,
+}
+
+public struct TrajectoryMuzzleV
+{
+    public const float CloseShootV = 5.0f;
+    public const float MiddleShootV = 8.0f;
+    public const float LongShootV = 10.0f;
+}
+
+public struct TrajectorySpeedOffSet
+{
+    public const float CloseShootV = 0.2f;
+    public const float MiddleShootV = 0.15f;
+    public const float LongShootV = 0.13f;
+}
+
 public static class BallTrajactoryManager
 {
     public static float gravityF = -9.8f;
-    public static float muzzleV = 8.0f;
     public static float frameRate = 1.0f / 30.0f;
-    public static float speedOffset = 0.11f;
 
-    public static List<Vector3> CalculateBallTrajactory(Vector3 start, Vector3 end)
+    public static List<Vector3> CalculateBallTrajactory(Vector3 start, Vector3 end, float muzzleV, float speedOffset)
     {
         List<Vector3> traj = new List<Vector3>();
         float time = 0;
-        Vector3 calcDir = CalculateOutDirection(start, end, out time);
+        Vector3 calcDir = CalculateOutDirection(start, end, muzzleV, out time);
         float t = 0;
         Vector3 gravity = new Vector3(0, gravityF, 0);
         while(t< time)
@@ -25,7 +44,7 @@ public static class BallTrajactoryManager
         return traj;
     }
 
-    private static Vector3 CalculateOutDirection(Vector3 start, Vector3 end, out float ttt)
+    private static Vector3 CalculateOutDirection(Vector3 start, Vector3 end, float muzzleV, out float ttt)
     {
         ttt = 0f;
         Vector3 gravity = new Vector3(0,gravityF,0);

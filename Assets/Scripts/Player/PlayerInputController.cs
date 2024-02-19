@@ -6,14 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerInputController : MonoBehaviour
 {
     InputActionsAsset PlayerInputAction;
-
-    //Vector2 move;
-    //public float speed = 5;
-
-    //Animator playerAnimator;
-    //Animator ballAnimator;
-
-
     private void Awake()
     {
         //playerAnimator = this.GetComponent<Animator>();
@@ -28,31 +20,31 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnReceive(InputAction.CallbackContext context)
     {
-        Debug.Log($"按下接球键J" + context);
+        //Debug.Log($"按下接球键J" + context);
         EventManager<PlayerInputEvent>.instance.TriggerEvent(PlayerInputEvent.Rececive);
     }
 
     private void OnPass(InputAction.CallbackContext context)
     {
-        Debug.Log($"按下传球键P" + context);
+        //Debug.Log($"按下传球键P" + context);
         EventManager<PlayerInputEvent>.instance.TriggerEvent(PlayerInputEvent.Pass);
     }
 
     private void OnShoot(InputAction.CallbackContext context)
     {
-        Debug.Log($"按下投篮键Space" + context);
+        //Debug.Log($"按下投篮键Space" + context);
         EventManager<PlayerInputEvent>.instance.TriggerEvent(PlayerInputEvent.Shoot);
     }
 
     private void OnMoveCanceled(InputAction.CallbackContext context)
     {
-        Debug.Log($"<color=red>取消按下方向键</color>" + context);
+        //Debug.Log($"<color=red>取消按下方向键</color>" + context);
         EventManager<PlayerInputEvent>.instance.TriggerEvent(PlayerInputEvent.MoveCancled);
     }
 
     private void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log($"按下方向键" + context);
+        //Debug.Log($"按下方向键" + context);
         Vector2 moveDir = context.ReadValue<Vector2>();
         EventManager<PlayerInputEvent>.instance.TriggerEvent(PlayerInputEvent.Move, moveDir);
     }

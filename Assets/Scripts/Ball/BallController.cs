@@ -183,6 +183,25 @@ public class BallController : MonoBehaviour
         visualizedBall.SetActive(false);
         flyBall.transform.position = boneBall.transform.position;
         trajectory.Clear();
-        trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, ballFlyTargetF.transform.position);
+        float distance = Vector2.Distance(this.transform.position.ToVector2(), ballFlyTargetF.transform.position.ToVector2());
+        Debug.Log($"Çò¾àÀëÇò¿ðµÄ¾àÀëÊÇ:{distance}");
+        float muzzleV=0;
+        float speedOffSet=0;
+        if (distance > 0 && distance < 3.0f)
+        {
+            muzzleV = TrajectoryMuzzleV.CloseShootV;
+            speedOffSet = TrajectorySpeedOffSet.CloseShootV;
+        }
+        else if (distance > 3.0f && distance < 6.3f)
+        {
+            muzzleV = TrajectoryMuzzleV.MiddleShootV;
+            speedOffSet = TrajectorySpeedOffSet.MiddleShootV;
+        }
+        else if (distance > 6.3f)
+        {
+            muzzleV = TrajectoryMuzzleV.LongShootV;
+            speedOffSet = TrajectorySpeedOffSet.LongShootV;
+        }
+        trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, ballFlyTargetF.transform.position, muzzleV, speedOffSet);
     }
 }
