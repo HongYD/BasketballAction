@@ -19,8 +19,8 @@ public struct TrajectoryMuzzleV
 public struct TrajectorySpeedOffSet
 {
     public const float CloseShootV = 0.2f;
-    public const float MiddleShootV = 0.15f;
-    public const float LongShootV = 0.13f;
+    public const float MiddleShootV = 0.17f;
+    public const float LongShootV = 0.15f;
 }
 
 public static class BallTrajactoryManager
