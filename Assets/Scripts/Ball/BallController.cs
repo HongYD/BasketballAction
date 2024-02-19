@@ -6,13 +6,16 @@ using UnityEngine;
 
 public enum BallState
 {
-    Animate,
+    IdleFly=0,
+    MoveFly,
     ShootFly,
     PassFly,
     ReceiveFly,
     FreeFly,
+    PickUp,
 }
 
+//这个球完全受动画控制
 public class BallController : MonoBehaviour
 {
     [SerializeField]
@@ -39,7 +42,7 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ballState = BallState.Animate;
+        ballState = BallState.IdleFly;
         visualizedBall = transform.GetChild(0).gameObject;
         boneBall = transform.GetChild(1).gameObject;
         rb = flyBall.GetComponent<Rigidbody>();
@@ -47,6 +50,7 @@ public class BallController : MonoBehaviour
         flyBall = GameObject.Find("basketball");
         curIndex = 0;
         flyBall.SetActive(false);
+
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Move, OnPlayerMove);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.MoveCancled, OnPlayerMoveCancle);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Rececive, OnPlayerReceive);
@@ -58,20 +62,22 @@ public class BallController : MonoBehaviour
 
     private void OnPickUpBallEnd(object[] param)
     {
-        ballState = BallState.Animate;
         flyBall.SetActive(false);
         visualizedBall.SetActive(true);
     }
 
     private void OnPickUpBall(object[] param)
     {
+        ballState = BallState.IdleFly;
         rb.isKinematic = true;
+        ballAnimator.SetTrigger("PickUpBall");
     }
 
     private void OnPlayerShoot(object[] param)
     {
         rb.isKinematic = true;
         ballAnimator.SetTrigger("ShootBall");
+        flyBall.transform.parent = null;
     }
 
     private void OnPlayerPass(object[] param)
@@ -97,9 +103,9 @@ public class BallController : MonoBehaviour
 
     private void OnPlayerMove(object[] param)
     {
-        if (ballState != BallState.ShootFly && ballState != BallState.FreeFly)
+        if (ballState != BallState.ShootFly)
         {
-            ballState = BallState.Animate;
+            ballState = BallState.MoveFly;
         }
         ballAnimator.SetBool("IsJog", true);
         ballMoveDir = (Vector2)param[0];
@@ -110,7 +116,7 @@ public class BallController : MonoBehaviour
     {
         switch (ballState)
         {
-            case BallState.Animate:
+            case BallState.MoveFly:
                 Animate();
                 break;
             case BallState.ShootFly:
@@ -157,12 +163,13 @@ public class BallController : MonoBehaviour
             {
                 rb.isKinematic = false;
             }
+            EventManager<AnimationEvent>.instance.TriggerEvent(AnimationEvent.isNeedPickUpEvent);
         }
     }
 
     private void ReceiveFly()
     {
-        ballState = BallState.Animate;
+        ballState = BallState.MoveFly;
     }
 
     private void FixedUpdate()

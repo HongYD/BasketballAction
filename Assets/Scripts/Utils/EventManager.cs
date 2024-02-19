@@ -6,6 +6,7 @@ public enum AnimationEvent
 {
     PickUpBallEvent,
     PickUpBallEndEvent,
+    isNeedPickUpEvent,
 }
 
 public enum PlayerInputEvent
