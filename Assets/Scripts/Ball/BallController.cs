@@ -188,8 +188,10 @@ public class BallController : MonoBehaviour
             if (ballHitResult == BallHitResult.Miss)
             {
                 Vector3 dir = (trajectory[0] - trajectory[trajectory.Count - 1]).normalized;
-                rb.AddForce((dir + new Vector3(0,forceUpOffset,0)) * forceStrength, ForceMode.Impulse);                
+                rb.AddForce((dir + new Vector3(0,forceUpOffset,0)) * forceStrength, ForceMode.Impulse);
+                SoundManager.PlaySound(SoundManager.SoundType.BounceBasket);
             }
+            SoundManager.PlaySound(SoundManager.SoundType.BounceWire);
             trajectory.Clear(); 
         }
     }
