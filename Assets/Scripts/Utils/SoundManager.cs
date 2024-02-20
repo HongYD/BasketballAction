@@ -19,7 +19,7 @@ public static class SoundManager
     public static void Initialize()
     {
         soundTimerDictionary = new Dictionary<SoundType, float>();
-        soundTimerDictionary[SoundType.PlayerMove] = 0f;
+        soundTimerDictionary[SoundType.BounceFloor] = 0f;
     }
 
     public static void PlaySound(SoundType soundType, Vector3 position)
@@ -58,7 +58,7 @@ public static class SoundManager
         {
             default:
                 return true;
-            case SoundType.PlayerMove:
+            case SoundType.BounceFloor:
                 if (soundTimerDictionary.ContainsKey(soundType))
                 {
                     float lastTimePlayed =soundTimerDictionary[soundType];

@@ -189,9 +189,9 @@ public class BallController : MonoBehaviour
             {
                 Vector3 dir = (trajectory[0] - trajectory[trajectory.Count - 1]).normalized;
                 rb.AddForce((dir + new Vector3(0,forceUpOffset,0)) * forceStrength, ForceMode.Impulse);
-                SoundManager.PlaySound(SoundManager.SoundType.BounceBasket);
+                SoundManager.PlaySound(SoundManager.SoundType.BounceBasket,rb.transform.position);
             }
-            SoundManager.PlaySound(SoundManager.SoundType.BounceWire);
+            SoundManager.PlaySound(SoundManager.SoundType.BounceWire, rb.transform.position);
             trajectory.Clear(); 
         }
     }
@@ -258,5 +258,10 @@ public class BallController : MonoBehaviour
                 break;
         }
         trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, targetTrans.transform.position, muzzleV);
+    }
+
+    public void OnBallAnimTouchGround()
+    {
+        SoundManager.PlaySound(SoundManager.SoundType.BounceFloor,this.transform.position);
     }
 }

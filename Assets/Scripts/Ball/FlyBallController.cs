@@ -39,4 +39,12 @@ public class FlyBallController : MonoBehaviour
         isNeedPickUp = true;
         hasPickUp = false;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.BounceFloor,this.transform.position);
+        }
+    }
 }
