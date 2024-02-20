@@ -64,6 +64,8 @@ public class BasketballPlayer : PlayerAgent
     private float targetWeight;
     [SerializeField]
     private GameObject flyBall;
+    [SerializeField]
+    private float shootAbility;
 
     // Start is called before the first frame update
     void Start()
@@ -96,6 +98,7 @@ public class BasketballPlayer : PlayerAgent
     {
         state = PlayerState.Shoot;
         playerAnimator.SetTrigger("ShootBall");
+        EventManager<PlayerAbilityEvent>.instance.TriggerEvent(PlayerAbilityEvent.ShootAbility, shootAbility);
     }
 
     private void OnPlayerPass(object[] param)

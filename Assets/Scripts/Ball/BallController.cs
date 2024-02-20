@@ -14,6 +14,12 @@ public enum BallState
     PickUp,
 }
 
+public enum BallHitResult
+{
+    Hit,
+    Miss,
+}
+
 //这个球完全受动画控制
 public class BallController : MonoBehaviour
 {
@@ -27,6 +33,10 @@ public class BallController : MonoBehaviour
     [SerializeField]
     private GameObject ballFlyTargetF;
     [SerializeField]
+    private GameObject missTargetFA;
+    [SerializeField]
+    private GameObject missTargetFB;
+    [SerializeField]
     private GameObject ballFlyTargetB;
     [SerializeField]
     private List<Vector3> trajectory;
@@ -36,6 +46,10 @@ public class BallController : MonoBehaviour
     GameObject boneBall;
     private int curIndex;
     private Rigidbody rb;
+    [SerializeField]
+    private BallHitResult ballHitResult;
+    [SerializeField]
+    private float forceStrength;
 
 
     // Start is called before the first frame update
@@ -49,6 +63,7 @@ public class BallController : MonoBehaviour
         flyBall = GameObject.Find("basketball");
         curIndex = 0;
         flyBall.SetActive(false);
+        ballHitResult = BallHitResult.Miss;
 
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Move, OnPlayerMove);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.MoveCancled, OnPlayerMoveCancle);
@@ -57,6 +72,23 @@ public class BallController : MonoBehaviour
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Shoot, OnPlayerShoot);
         EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.PickUpBallEvent, OnPickUpBall);
         EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.PickUpBallEndEvent, OnPickUpBallEnd);
+        EventManager<PlayerAbilityEvent>.instance.AddListener(PlayerAbilityEvent.ShootAbility, OnPlayerShootHitDecide);
+    }
+
+    private void OnPlayerShootHitDecide(object[] param)
+    {
+        float playerShootAbility = (float)param[0];
+        float hitProbability = RandomNumberGenerator.GenerateRandomNumber();
+        if (hitProbability < playerShootAbility)
+        {
+            ballHitResult = BallHitResult.Hit;
+            Debug.Log($"<color=blue>这球进了!</color>");
+        }
+        else
+        {
+            ballHitResult = BallHitResult.Miss;
+            Debug.Log($"<color=red>这球没进!</color>");
+        }
     }
 
     private void OnPickUpBallEnd(object[] param)
@@ -150,7 +182,13 @@ public class BallController : MonoBehaviour
         {
             ballState = BallState.FreeFly;
             curIndex = 0;
-            trajectory.Clear();
+            rb.isKinematic = false;
+            if (ballHitResult == BallHitResult.Miss)
+            {
+                Vector3 dir = (trajectory[0] - trajectory[trajectory.Count - 1]).normalized;
+                rb.AddForce(dir * forceStrength, ForceMode.Impulse);                
+            }
+            trajectory.Clear(); 
         }
     }
 
@@ -184,24 +222,37 @@ public class BallController : MonoBehaviour
         flyBall.transform.position = boneBall.transform.position;
         trajectory.Clear();
         float distance = Vector2.Distance(this.transform.position.ToVector2(), ballFlyTargetF.transform.position.ToVector2());
-        Debug.Log($"球距离球筐的距离是:{distance}");
         float muzzleV=0;
-        float speedOffSet=0;
         if (distance > 0 && distance < 3.0f)
         {
             muzzleV = TrajectoryMuzzleV.CloseShootV;
-            speedOffSet = TrajectorySpeedOffSet.CloseShootV;
         }
         else if (distance > 3.0f && distance < 6.3f)
         {
             muzzleV = TrajectoryMuzzleV.MiddleShootV;
-            speedOffSet = TrajectorySpeedOffSet.MiddleShootV;
         }
         else if (distance > 6.3f)
         {
             muzzleV = TrajectoryMuzzleV.LongShootV;
-            speedOffSet = TrajectorySpeedOffSet.LongShootV;
         }
-        trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, ballFlyTargetF.transform.position, muzzleV, speedOffSet);
+        Transform targetTrans = null;
+        switch (ballHitResult)
+        {
+            case BallHitResult.Hit:
+                targetTrans = ballFlyTargetF.transform;
+                break;
+            case BallHitResult.Miss:
+                float ranNum = RandomNumberGenerator.GenerateRandomNumber();
+                if(ranNum > 0.5f)
+                {
+                    targetTrans = missTargetFA.transform;
+                }
+                else
+                {
+                    targetTrans = missTargetFB.transform;
+                }
+                break;
+        }
+        trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, targetTrans.transform.position, muzzleV);
     }
 }

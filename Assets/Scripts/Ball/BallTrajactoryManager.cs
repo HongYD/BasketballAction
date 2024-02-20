@@ -16,19 +16,11 @@ public struct TrajectoryMuzzleV
     public const float LongShootV = 10.0f;
 }
 
-public struct TrajectorySpeedOffSet
-{
-    public const float CloseShootV = 0.2f;
-    public const float MiddleShootV = 0.17f;
-    public const float LongShootV = 0.15f;
-}
-
 public static class BallTrajactoryManager
 {
     public static float gravityF = -9.8f;
-    public static float frameRate = 1.0f / 30.0f;
 
-    public static List<Vector3> CalculateBallTrajactory(Vector3 start, Vector3 end, float muzzleV, float speedOffset)
+    public static List<Vector3> CalculateBallTrajactory(Vector3 start, Vector3 end, float muzzleV)
     {
         List<Vector3> traj = new List<Vector3>();
         float time = 0;
@@ -37,7 +29,7 @@ public static class BallTrajactoryManager
         Vector3 gravity = new Vector3(0, gravityF, 0);
         while(t< time)
         {
-            t += time * frameRate * speedOffset;
+            t += Time.deltaTime;
             Vector3 pt = start + calcDir * muzzleV * t + (gravity * t * t) / 2;
             traj.Add(pt);
         }

@@ -18,6 +18,11 @@ public enum PlayerInputEvent
     Rececive,
 }
 
+public enum PlayerAbilityEvent
+{
+    ShootAbility=0,
+}
+
 public class EventManager<T>
 {
     private static EventManager<T> _instance;
