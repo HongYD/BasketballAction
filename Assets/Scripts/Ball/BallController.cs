@@ -50,6 +50,8 @@ public class BallController : MonoBehaviour
     private BallHitResult ballHitResult;
     [SerializeField]
     private float forceStrength;
+    [SerializeField]
+    private float forceUpOffset;
 
 
     // Start is called before the first frame update
@@ -186,7 +188,7 @@ public class BallController : MonoBehaviour
             if (ballHitResult == BallHitResult.Miss)
             {
                 Vector3 dir = (trajectory[0] - trajectory[trajectory.Count - 1]).normalized;
-                rb.AddForce(dir * forceStrength, ForceMode.Impulse);                
+                rb.AddForce((dir + new Vector3(0,forceUpOffset,0)) * forceStrength, ForceMode.Impulse);                
             }
             trajectory.Clear(); 
         }
