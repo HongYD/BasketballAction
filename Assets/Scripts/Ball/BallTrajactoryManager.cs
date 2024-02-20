@@ -29,7 +29,7 @@ public static class BallTrajactoryManager
         Vector3 gravity = new Vector3(0, gravityF, 0);
         while(t< time)
         {
-            t += 0.007f;
+            t += 0.005f;
             Vector3 pt = start + calcDir * muzzleV * t + (gravity * t * t) / 2;
             traj.Add(pt);
         }

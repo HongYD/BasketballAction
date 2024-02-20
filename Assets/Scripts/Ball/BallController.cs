@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BallScoreType{
+    One = 1,
+    Two,
+    Three,
+}
 
 public enum BallState
 {
@@ -52,6 +57,8 @@ public class BallController : MonoBehaviour
     private float forceStrength;
     [SerializeField]
     private float forceUpOffset;
+    [SerializeField]
+    private float flyballDist;
 
 
     // Start is called before the first frame update
@@ -188,10 +195,21 @@ public class BallController : MonoBehaviour
             if (ballHitResult == BallHitResult.Miss)
             {
                 Vector3 dir = (trajectory[0] - trajectory[trajectory.Count - 1]).normalized;
-                rb.AddForce((dir + new Vector3(0,forceUpOffset,0)) * forceStrength, ForceMode.Impulse);
-                SoundManager.PlaySound(SoundManager.SoundType.BounceBasket,rb.transform.position);
+                rb.AddForce((dir + new Vector3(0, forceUpOffset, 0)) * forceStrength, ForceMode.Impulse);
+                SoundManager.PlaySound(SoundManager.SoundType.BounceBasket, rb.transform.position);
             }
-            SoundManager.PlaySound(SoundManager.SoundType.BounceWire, rb.transform.position);
+            else
+            {
+                SoundManager.PlaySound(SoundManager.SoundType.BounceWire, rb.transform.position);
+                if (flyballDist >= HallDataStruct.ThreePointLineDist)
+                {
+                    EventManager<GameEventEvent>.instance.TriggerEvent(GameEventEvent.OnScoreEvent, (int)BallScoreType.Three);
+                }
+                else
+                {
+                    EventManager<GameEventEvent>.instance.TriggerEvent(GameEventEvent.OnScoreEvent, (int)BallScoreType.Two);
+                }
+            }
             trajectory.Clear(); 
         }
     }
@@ -225,17 +243,17 @@ public class BallController : MonoBehaviour
         visualizedBall.SetActive(false);
         flyBall.transform.position = boneBall.transform.position;
         trajectory.Clear();
-        float distance = Vector2.Distance(this.transform.position.ToVector2(), ballFlyTargetF.transform.position.ToVector2());
+        flyballDist = Vector2.Distance(this.transform.position.ToVector2(), ballFlyTargetF.transform.position.ToVector2());
         float muzzleV=0;
-        if (distance > 0 && distance < 3.0f)
+        if (flyballDist > 0 && flyballDist < 3.0f)
         {
             muzzleV = TrajectoryMuzzleV.CloseShootV;
         }
-        else if (distance > 3.0f && distance < 6.3f)
+        else if (flyballDist > 3.0f && flyballDist < 6.3f)
         {
             muzzleV = TrajectoryMuzzleV.MiddleShootV;
         }
-        else if (distance > 6.3f)
+        else if (flyballDist > 6.3f)
         {
             muzzleV = TrajectoryMuzzleV.LongShootV;
         }
