@@ -245,15 +245,15 @@ public class BallController : MonoBehaviour
         trajectory.Clear();
         flyballDist = Vector2.Distance(this.transform.position.ToVector2(), ballFlyTargetF.transform.position.ToVector2());
         float muzzleV=0;
-        if (flyballDist > 0 && flyballDist < 3.0f)
+        if (flyballDist > 0 && flyballDist < HallDataStruct.LayUpDist)
         {
             muzzleV = TrajectoryMuzzleV.CloseShootV;
         }
-        else if (flyballDist > 3.0f && flyballDist < 6.3f)
+        else if (flyballDist > HallDataStruct.LayUpDist && flyballDist < HallDataStruct.MiddleShootDist)
         {
             muzzleV = TrajectoryMuzzleV.MiddleShootV;
         }
-        else if (flyballDist > 6.3f)
+        else if (flyballDist > HallDataStruct.MiddleShootDist)
         {
             muzzleV = TrajectoryMuzzleV.LongShootV;
         }

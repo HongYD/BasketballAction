@@ -12,6 +12,7 @@ public enum PlayerState
     Pass,
     Rececive,
     PickUp,
+    LayUp,
 }
 
 public struct PlayerSpeedLevel
@@ -66,6 +67,8 @@ public class BasketballPlayer : PlayerAgent
     private GameObject flyBall;
     [SerializeField]
     private float shootAbility;
+    [SerializeField]
+    private float hoopPlayerDist;
 
     // Start is called before the first frame update
     void Start()
@@ -97,7 +100,16 @@ public class BasketballPlayer : PlayerAgent
     private void OnPlayerShoot(object[] param)
     {
         state = PlayerState.Shoot;
-        playerAnimator.SetTrigger("ShootBall");
+        hoopPlayerDist = Vector2.Distance(transform.position.ToVector2(), hoopF.transform.position.ToVector2());
+        if (hoopPlayerDist < HallDataStruct.LayUpDist)
+        {
+            state = PlayerState.LayUp;
+            playerAnimator.SetTrigger("LayUp");
+        }
+        else
+        {
+            playerAnimator.SetTrigger("ShootBall");
+        }
         EventManager<PlayerAbilityEvent>.instance.TriggerEvent(PlayerAbilityEvent.ShootAbility, shootAbility);
     }
 
@@ -145,6 +157,9 @@ public class BasketballPlayer : PlayerAgent
             case PlayerState.Shoot:
                 Shoot();
                 break;
+            case PlayerState.LayUp:
+                LayUp();
+                break;
             case PlayerState.Pass:
                 Pass();
                 break;
@@ -191,7 +206,19 @@ public class BasketballPlayer : PlayerAgent
         float rotY = Quaternion.LookRotation(new Vector3(hookDir.x, 0, hookDir.y), transform.up).eulerAngles.y;
         float curY = this.transform.rotation.eulerAngles.y;
         shootAngleDiff = rotY - curY;
-        StartCoroutine(FixPlayerRotateOnShoot());
+        StartCoroutine(FixPlayerTransformOnShoot());
+        state = PlayerState.Idle;
+    }
+
+    private void LayUp()
+    {
+        Vector2 hookDir = (hoopF.transform.position - transform.position).ToVector2().normalized;
+        float rotY = Quaternion.LookRotation(new Vector3(hookDir.x, 0, hookDir.y), transform.up).eulerAngles.y;
+        float curY = this.transform.rotation.eulerAngles.y;
+        shootAngleDiff = rotY - curY;
+        StartCoroutine(FixPlayerTransformOnShoot());
+        flyBall.transform.position = Vector3.zero;
+        flyBall.transform.SetParent(rightHandTransform,true);
         state = PlayerState.Idle;
     }
 
@@ -212,7 +239,7 @@ public class BasketballPlayer : PlayerAgent
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, angleSpeed * Time.deltaTime);
     }
 
-    private IEnumerator FixPlayerRotateOnShoot()
+    private IEnumerator FixPlayerTransformOnShoot()
     {
         float absDiff = Mathf.Abs(shootAngleDiff);
         if (absDiff > 180.0f)
@@ -236,7 +263,7 @@ public class BasketballPlayer : PlayerAgent
             yield return null;
         }
         shootAngleDiff = 0;
-        StopCoroutine(FixPlayerRotateOnShoot());
+        StopCoroutine(FixPlayerTransformOnShoot());
     }
 
     public void OnPickUpEvent()

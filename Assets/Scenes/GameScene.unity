@@ -831,19 +831,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 211729346006163395, guid: af4df5453942213488c1f58508bf59c7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7016372
+      value: 0.70163727
       objectReference: {fileID: 0}
     - target: {fileID: 211729346006163395, guid: af4df5453942213488c1f58508bf59c7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.060451902
+      value: 0.06045191
       objectReference: {fileID: 0}
     - target: {fileID: 211729346006163395, guid: af4df5453942213488c1f58508bf59c7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70734483
+      value: -0.7073448
       objectReference: {fileID: 0}
     - target: {fileID: 211729346006163395, guid: af4df5453942213488c1f58508bf59c7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.06094365
+      value: 0.060943656
       objectReference: {fileID: 0}
     - target: {fileID: 211729346006163395, guid: af4df5453942213488c1f58508bf59c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -981,6 +981,15 @@ PrefabInstance:
     - target: {fileID: 5750647883569167705, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 120.25113
+      objectReference: {fileID: 0}
+    - target: {fileID: 7057500323351030558, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'Hand_R'\n\tTransform 'Upperarm_R'\n\tTransform
+        'lowerarm_r'\n\tTransform 'Hand_R'\n\tTransform 'Upperarm_R'\n\tTransform
+        'lowerarm_r'\n\tTransform 'Hand_R'\n\tTransform 'Upperarm_R'\n\tTransform
+        'lowerarm_r'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
@@ -1238,19 +1247,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4165870037270384572, guid: f104d3e34daf6304b8afe6112411798b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7016372
+      value: 0.70163727
       objectReference: {fileID: 0}
     - target: {fileID: 4165870037270384572, guid: f104d3e34daf6304b8afe6112411798b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.060451902
+      value: 0.06045191
       objectReference: {fileID: 0}
     - target: {fileID: 4165870037270384572, guid: f104d3e34daf6304b8afe6112411798b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70734483
+      value: -0.7073448
       objectReference: {fileID: 0}
     - target: {fileID: 4165870037270384572, guid: f104d3e34daf6304b8afe6112411798b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.06094365
+      value: 0.060943656
       objectReference: {fileID: 0}
     - target: {fileID: 4165870037270384572, guid: f104d3e34daf6304b8afe6112411798b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
