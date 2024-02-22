@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BallScoreType{
+public enum BallScoreType
+{
     One = 1,
     Two,
     Three,
@@ -17,12 +18,20 @@ public enum BallState
     ReceiveFly,
     FreeFly,
     PickUp,
+    LayUp,
 }
 
 public enum BallHitResult
 {
     Hit,
     Miss,
+}
+
+public enum ShootPoseType
+{
+    NormalShoot,
+    SlamDunk,
+    LayUp,
 }
 
 //这个球完全受动画控制
@@ -59,6 +68,10 @@ public class BallController : MonoBehaviour
     private float forceUpOffset;
     [SerializeField]
     private float flyballDist;
+    [SerializeField]
+    private BallScoreType ballScoreType;
+    [SerializeField]
+    private Transform playerRightHandTransform;
 
 
     // Start is called before the first frame update
@@ -78,10 +91,28 @@ public class BallController : MonoBehaviour
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.MoveCancled, OnPlayerMoveCancle);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Rececive, OnPlayerReceive);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Pass, OnPlayerPass);
-        EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Shoot, OnPlayerShoot);
+        //EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Shoot, OnPlayerShoot);
         EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.PickUpBallEvent, OnPickUpBall);
         EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.PickUpBallEndEvent, OnPickUpBallEnd);
         EventManager<PlayerAbilityEvent>.instance.AddListener(PlayerAbilityEvent.ShootAbility, OnPlayerShootHitDecide);
+        EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.ShootBallEvent, OnShoot);
+        EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.LayUpShootEvent, OnLayUpShoot);
+    }
+
+    private void OnShoot(object[] param)
+    {
+        ShootPoseType shootPoseType = (ShootPoseType)param[0];
+        if(shootPoseType == ShootPoseType.NormalShoot)
+        {
+            rb.isKinematic = true;
+            ballAnimator.SetTrigger("ShootBall");
+            flyBall.transform.parent = null;
+        }
+        else if(shootPoseType == ShootPoseType.LayUp)
+        {
+            ballState = BallState.LayUp;
+            ballAnimator.SetTrigger("LayUp");
+        }
     }
 
     private void OnPlayerShootHitDecide(object[] param)
@@ -113,12 +144,12 @@ public class BallController : MonoBehaviour
         ballAnimator.SetTrigger("PickUpBall");
     }
 
-    private void OnPlayerShoot(object[] param)
-    {
-        rb.isKinematic = true;
-        ballAnimator.SetTrigger("ShootBall");
-        flyBall.transform.parent = null;
-    }
+    //private void OnPlayerShoot(object[] param)
+    //{
+    //    rb.isKinematic = true;
+    //    ballAnimator.SetTrigger("ShootBall");
+    //    flyBall.transform.parent = null;
+    //}
 
     private void OnPlayerPass(object[] param)
     {
@@ -170,7 +201,28 @@ public class BallController : MonoBehaviour
             case BallState.FreeFly:
                 FreeFly();
                 break;
+            case BallState.LayUp:
+                LayUp();
+                break;
         }
+    }
+
+    private void LayUp()
+    {
+        flyBall.SetActive(true);
+        visualizedBall.SetActive(false);
+        flyBall.transform.position = playerRightHandTransform.position;
+        flyBall.transform.SetParent(playerRightHandTransform, true);
+    }
+
+    private void OnLayUpShoot(object[] param)
+    {
+        trajectory.Clear();
+        ballHitResult = BallHitResult.Hit;
+        float muzzleV = TrajectoryMuzzleV.CloseShootV;
+        trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, ballFlyTargetF.transform.position, muzzleV);
+        flyBall.transform.parent = null;
+        ballState = BallState.ShootFly;
     }
 
     private void Animate()

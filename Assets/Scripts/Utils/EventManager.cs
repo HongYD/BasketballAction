@@ -12,6 +12,9 @@ public enum AnimationEvent
     PickUpBallEvent,
     PickUpBallEndEvent,
     isNeedPickUpEvent,
+    LayUpShootEvent,
+
+    ShootBallEvent,//通知球改变行为，是播放投篮动画还是上篮或是扣篮动画
 }
 
 public enum PlayerInputEvent

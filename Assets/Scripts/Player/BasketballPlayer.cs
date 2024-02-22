@@ -33,6 +33,8 @@ public struct PlayerAnimationData
     public const int shootEvent = 16;
 }
 
+
+
 public class BasketballPlayer : PlayerAgent
 {
     [SerializeField]
@@ -105,10 +107,12 @@ public class BasketballPlayer : PlayerAgent
         {
             state = PlayerState.LayUp;
             playerAnimator.SetTrigger("LayUp");
+            EventManager<AnimationEvent>.instance.TriggerEvent(AnimationEvent.ShootBallEvent, ShootPoseType.LayUp);
         }
         else
         {
             playerAnimator.SetTrigger("ShootBall");
+            EventManager<AnimationEvent>.instance.TriggerEvent(AnimationEvent.ShootBallEvent, ShootPoseType.NormalShoot);
         }
         EventManager<PlayerAbilityEvent>.instance.TriggerEvent(PlayerAbilityEvent.ShootAbility, shootAbility);
     }
@@ -277,5 +281,10 @@ public class BasketballPlayer : PlayerAgent
     public void OnPickUpEndEvent()
     {
         EventManager<AnimationEvent>.instance.TriggerEvent(AnimationEvent.PickUpBallEndEvent);
+    }
+
+    public void OnLayUpShoot()
+    {
+        EventManager<AnimationEvent>.instance.TriggerEvent(AnimationEvent.LayUpShootEvent);
     }
 }

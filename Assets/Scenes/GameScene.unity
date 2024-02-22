@@ -831,19 +831,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 211729346006163395, guid: af4df5453942213488c1f58508bf59c7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70163727
+      value: 0.7016372
       objectReference: {fileID: 0}
     - target: {fileID: 211729346006163395, guid: af4df5453942213488c1f58508bf59c7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.06045191
+      value: 0.060451906
       objectReference: {fileID: 0}
     - target: {fileID: 211729346006163395, guid: af4df5453942213488c1f58508bf59c7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7073448
+      value: -0.70734483
       objectReference: {fileID: 0}
     - target: {fileID: 211729346006163395, guid: af4df5453942213488c1f58508bf59c7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.060943656
+      value: 0.060943652
       objectReference: {fileID: 0}
     - target: {fileID: 211729346006163395, guid: af4df5453942213488c1f58508bf59c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -863,6 +863,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4df5453942213488c1f58508bf59c7, type: 3}
+--- !u!4 &1112519121 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8118816451374213891, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+  m_PrefabInstance: {fileID: 1126150656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1126150656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -898,6 +903,10 @@ PrefabInstance:
       propertyPath: ballFlyTargetF
       value: 
       objectReference: {fileID: 1363546097}
+    - target: {fileID: 185773052, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: playerRightHandTransform
+      value: 
+      objectReference: {fileID: 1112519121}
     - target: {fileID: 1126150659, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
       propertyPath: hoopB
       value: 
@@ -984,12 +993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7057500323351030558, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'Hand_R'\n\tTransform 'Upperarm_R'\n\tTransform
-        'lowerarm_r'\n\tTransform 'Hand_R'\n\tTransform 'Upperarm_R'\n\tTransform
-        'lowerarm_r'\n\tTransform 'Hand_R'\n\tTransform 'Upperarm_R'\n\tTransform
-        'lowerarm_r'"
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
@@ -1247,19 +1251,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4165870037270384572, guid: f104d3e34daf6304b8afe6112411798b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70163727
+      value: 0.7016372
       objectReference: {fileID: 0}
     - target: {fileID: 4165870037270384572, guid: f104d3e34daf6304b8afe6112411798b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.06045191
+      value: 0.060451906
       objectReference: {fileID: 0}
     - target: {fileID: 4165870037270384572, guid: f104d3e34daf6304b8afe6112411798b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7073448
+      value: -0.70734483
       objectReference: {fileID: 0}
     - target: {fileID: 4165870037270384572, guid: f104d3e34daf6304b8afe6112411798b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.060943656
+      value: 0.060943652
       objectReference: {fileID: 0}
     - target: {fileID: 4165870037270384572, guid: f104d3e34daf6304b8afe6112411798b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
