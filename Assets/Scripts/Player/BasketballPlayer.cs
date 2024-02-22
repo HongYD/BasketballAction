@@ -272,7 +272,6 @@ public class BasketballPlayer : PlayerAgent
 
     private IEnumerator FixPlayerTransformOnPickUp()
     {
-
         float absDiff = Mathf.Abs(pickUpAngleDiff);
         if (absDiff > 180.0f)
         {

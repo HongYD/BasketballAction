@@ -133,7 +133,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3968071434524176355}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 18.066269, y: 125.49614, z: 120.25113}
 --- !u!1 &639067050978900737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,10 +1335,18 @@ MonoBehaviour:
   ballMoveDir: {x: 0, y: 0}
   flyBall: {fileID: 0}
   ballFlyTargetF: {fileID: 0}
+  missTargetFA: {fileID: 0}
+  missTargetFB: {fileID: 0}
   ballFlyTargetB: {fileID: 0}
   trajectory: []
   visualizedBall: {fileID: 0}
   boneBall: {fileID: 0}
+  ballHitResult: 0
+  forceStrength: 2
+  forceUpOffset: 1.3
+  flyballDist: 0
+  ballScoreType: 0
+  playerRightHandTransform: {fileID: 8118816451374213891}
 --- !u!1 &4348994405806861278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,6 +1438,8 @@ MonoBehaviour:
   rightHandTarget: {fileID: 8425555646092415649}
   rightHandTransform: {fileID: 8118816451374213891}
   flyBall: {fileID: 0}
+  shootAbility: 0.4
+  hoopPlayerDist: 0
 --- !u!114 &1126150660
 MonoBehaviour:
   m_ObjectHideFlags: 0
