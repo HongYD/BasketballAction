@@ -20,11 +20,11 @@ public static class BallTrajactoryManager
 {
     public static float gravityF = -9.8f;
 
-    public static List<Vector3> CalculateBallTrajactory(Vector3 start, Vector3 end, float muzzleV)
+    public static List<Vector3> CalculateBallTrajactory(Vector3 start, Vector3 end, float muzzleV, bool isMin)
     {
         List<Vector3> traj = new List<Vector3>();
         float time = 0;
-        Vector3 calcDir = CalculateOutDirection(start, end, muzzleV, out time);
+        Vector3 calcDir = CalculateOutDirection(start, end, muzzleV, isMin, out time);
         float t = 0;
         Vector3 gravity = new Vector3(0, gravityF, 0);
         while(t< time)
@@ -36,7 +36,7 @@ public static class BallTrajactoryManager
         return traj;
     }
 
-    private static Vector3 CalculateOutDirection(Vector3 start, Vector3 end, float muzzleV, out float ttt)
+    private static Vector3 CalculateOutDirection(Vector3 start, Vector3 end, float muzzleV, bool isMin, out float ttt)
     {
         ttt = 0f;
         Vector3 gravity = new Vector3(0,gravityF,0);
@@ -72,7 +72,14 @@ public static class BallTrajactoryManager
                 }
                 else
                 {
-                    ttt = Mathf.Max(time0, time1);
+                    if (isMin)
+                    {
+                        ttt = Mathf.Min(time0, time1);
+                    }
+                    else
+                    {
+                        ttt = Mathf.Max(time0, time1);
+                    }
                 }
             }
             return (2 * delta - gravity * ttt * ttt) / (2 * muzzleV * ttt);

@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
@@ -266,7 +264,7 @@ public class BasketballPlayer : PlayerAgent
             Vector2 dir = layUpPosDiff.normalized;
             this.transform.Translate(new Vector3(dir.x,0,dir.y) * layUpSpeed);
             layUpJumpDist -= layUpSpeed;
-            Debug.Log($"æ‡¿Îªπ £{layUpJumpDist}");
+            //Debug.Log($"æ‡¿Îªπ £{layUpJumpDist}");
             yield return null;
         }
         StopCoroutine(FixPlayerPosOnLayUp());
@@ -315,5 +313,10 @@ public class BasketballPlayer : PlayerAgent
     public void OnLayUpShoot()
     {
         EventManager<AnimationEvent>.instance.TriggerEvent(AnimationEvent.LayUpShootEvent);
+    }
+
+    public void OnLayUpEnd()
+    {
+        this.transform.position = new Vector3(this.transform.position.x,0,this.transform.position.z);
     }
 }

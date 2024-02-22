@@ -8,8 +8,6 @@ public class PlayerInputController : MonoBehaviour
     InputActionsAsset PlayerInputAction;
     private void Awake()
     {
-        //playerAnimator = this.GetComponent<Animator>();
-        //ballAnimator = this.transform.Find("Ball").GetComponent<Animator>();
         PlayerInputAction = new InputActionsAsset();
         PlayerInputAction.PlayerControls.Move.performed += OnMove;
         PlayerInputAction.PlayerControls.Move.canceled += OnMoveCanceled;

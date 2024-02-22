@@ -91,7 +91,6 @@ public class BallController : MonoBehaviour
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.MoveCancled, OnPlayerMoveCancle);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Rececive, OnPlayerReceive);
         EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Pass, OnPlayerPass);
-        //EventManager<PlayerInputEvent>.instance.AddListener(PlayerInputEvent.Shoot, OnPlayerShoot);
         EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.PickUpBallEvent, OnPickUpBall);
         EventManager<AnimationEvent>.instance.AddListener(AnimationEvent.PickUpBallEndEvent, OnPickUpBallEnd);
         EventManager<PlayerAbilityEvent>.instance.AddListener(PlayerAbilityEvent.ShootAbility, OnPlayerShootHitDecide);
@@ -143,13 +142,6 @@ public class BallController : MonoBehaviour
         rb.isKinematic = true;
         ballAnimator.SetTrigger("PickUpBall");
     }
-
-    //private void OnPlayerShoot(object[] param)
-    //{
-    //    rb.isKinematic = true;
-    //    ballAnimator.SetTrigger("ShootBall");
-    //    flyBall.transform.parent = null;
-    //}
 
     private void OnPlayerPass(object[] param)
     {
@@ -220,7 +212,7 @@ public class BallController : MonoBehaviour
         trajectory.Clear();
         ballHitResult = BallHitResult.Hit;
         float muzzleV = TrajectoryMuzzleV.CloseShootV;
-        trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, ballFlyTargetF.transform.position, muzzleV);
+        trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, ballFlyTargetF.transform.position, muzzleV, true);
         flyBall.transform.parent = null;
         ballState = BallState.ShootFly;
     }
@@ -327,7 +319,7 @@ public class BallController : MonoBehaviour
                 }
                 break;
         }
-        trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, targetTrans.transform.position, muzzleV);
+        trajectory = BallTrajactoryManager.CalculateBallTrajactory(flyBall.transform.position, targetTrans.transform.position, muzzleV,false);
     }
 
     public void OnBallAnimTouchGround()
