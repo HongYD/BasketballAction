@@ -31,9 +31,11 @@ public struct PlayerSpeedDeadZone
 public struct PlayerAnimationData
 {
     public const int shootEvent = 16;
-    public const int layUpLength = 90;
+    public const int layUpLength = 250;
+    public const int layUpEventLength = 38;
     public const float playerHeight = 2.0f;
     public const float playerLayUpAnimMaxHeight = 0.42f;
+    public const float playerHalfHeight = 1.0f;
 }
 
 
@@ -61,7 +63,7 @@ public class BasketballPlayer : PlayerAgent
 
     private float shootAngleDiff;
 
-    private Vector3 layUpPosDiff;
+    private Vector2 layUpPosDiff;
     private float layUpJumpDist;
     private float layUpSpeed;
 
@@ -232,12 +234,9 @@ public class BasketballPlayer : PlayerAgent
         flyBall.transform.position = Vector3.zero;
         flyBall.transform.SetParent(rightHandTransform,true);
 
-        float heightDiff = HallDataStruct.HoopWireHeight - PlayerAnimationData.playerHeight - PlayerAnimationData.playerLayUpAnimMaxHeight;
-        Vector3 hoopUpVector3 = hoopF.transform.position - new Vector3(hoopF.transform.position.x, heightDiff, hoopF.transform.position.z);
-        Vector3 playerForwardVector3 = new Vector3(hoopF.transform.position.x, 0, hoopF.transform.position.z) - new Vector3(this.transform.position.x, 0, this.transform.position.z);
-        layUpPosDiff = hoopUpVector3 + playerForwardVector3;
+        layUpPosDiff = (hoopF.transform.position.ToVector2() - this.transform.position.ToVector2());
         layUpJumpDist = layUpPosDiff.magnitude;
-        layUpSpeed = layUpJumpDist / PlayerAnimationData.layUpLength;
+        layUpSpeed = layUpJumpDist / (float)PlayerAnimationData.layUpLength;
         StartCoroutine(FixPlayerPosOnLayUp());
         state = PlayerState.Idle;
     }
@@ -261,12 +260,13 @@ public class BasketballPlayer : PlayerAgent
 
     private IEnumerator FixPlayerPosOnLayUp()
     {
+        //Debug.Break();
         while (layUpJumpDist > 0)
         {
-            Vector3 dir = layUpPosDiff.normalized;
-            Vector3 movement = new Vector3(dir.x, dir.y, dir.z) * layUpSpeed*Time.deltaTime;
-            this.transform.Translate(movement);
+            Vector2 dir = layUpPosDiff.normalized;
+            this.transform.Translate(new Vector3(dir.x,0,dir.y) * layUpSpeed);
             layUpJumpDist -= layUpSpeed;
+            Debug.Log($"æ‡¿Îªπ £{layUpJumpDist}");
             yield return null;
         }
         StopCoroutine(FixPlayerPosOnLayUp());

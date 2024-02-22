@@ -932,6 +932,10 @@ PrefabInstance:
       propertyPath: shootAbility
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 1126150659, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
+      propertyPath: ballFlyTargetF
+      value: 
+      objectReference: {fileID: 1363546097}
     - target: {fileID: 1607276479780357001, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
       propertyPath: m_Weight
       value: 0
@@ -1002,7 +1006,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7057500323351030558, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
       propertyPath: m_WarningMessage
-      value: 
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'Hand_R'\n\tTransform 'Upperarm_R'\n\tTransform
+        'lowerarm_r'\n\tTransform 'Hand_R'\n\tTransform 'Upperarm_R'\n\tTransform
+        'lowerarm_r'\n\tTransform 'Hand_R'\n\tTransform 'Upperarm_R'\n\tTransform
+        'lowerarm_r'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46357ab25badd3498ec3de87dda48b6, type: 3}
