@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
@@ -29,14 +30,13 @@ public struct PlayerSpeedDeadZone
 public struct PlayerAnimationData
 {
     public const int shootEvent = 16;
+    public const int pickUpEvent = 90;
     public const int layUpLength = 250;
     public const int layUpEventLength = 38;
     public const float playerHeight = 2.0f;
     public const float playerLayUpAnimMaxHeight = 0.42f;
     public const float playerHalfHeight = 1.0f;
 }
-
-
 
 public class BasketballPlayer : PlayerAgent
 {
@@ -60,6 +60,7 @@ public class BasketballPlayer : PlayerAgent
     private GameObject hoopB;
 
     private float shootAngleDiff;
+    private float pickUpAngleDiff;
 
     private Vector2 layUpPosDiff;
     private float layUpJumpDist;
@@ -178,6 +179,9 @@ public class BasketballPlayer : PlayerAgent
             case PlayerState.Rececive:
                 Rececive();
                 break;
+            case PlayerState.PickUp:
+                PickUp();
+                break;
         }
     }
 
@@ -189,6 +193,16 @@ public class BasketballPlayer : PlayerAgent
     private void Idle()
     {
 
+    }
+
+    private void PickUp()
+    {
+        Vector2 flyBallDir = (flyBall.transform.position - transform.position).ToVector2().normalized;
+        float rotY = Quaternion.LookRotation(new Vector3(flyBallDir.x, 0, flyBallDir.y), transform.up).eulerAngles.y;
+        float curY = this.transform.rotation.eulerAngles.y;
+        pickUpAngleDiff = rotY - curY;
+        StartCoroutine(FixPlayerTransformOnPickUp());
+        state = PlayerState.Move;
     }
 
     private void Move()
@@ -256,6 +270,35 @@ public class BasketballPlayer : PlayerAgent
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, angleSpeed * Time.deltaTime);
     }
 
+    private IEnumerator FixPlayerTransformOnPickUp()
+    {
+
+        float absDiff = Mathf.Abs(pickUpAngleDiff);
+        if (absDiff > 180.0f)
+        {
+            if (pickUpAngleDiff > 0)
+            {
+                pickUpAngleDiff = (pickUpAngleDiff - 360.0f);
+                absDiff = Mathf.Abs(pickUpAngleDiff);
+            }
+            else
+            {
+                pickUpAngleDiff = (360.0f - Mathf.Abs(pickUpAngleDiff));
+                absDiff = Mathf.Abs(pickUpAngleDiff);
+            }
+        }
+        while (absDiff > 0)
+        {
+            float rotSpeed = pickUpAngleDiff / (float)PlayerAnimationData.pickUpEvent;
+            transform.Rotate(new Vector3(0, rotSpeed, 0));
+            absDiff -= Mathf.Abs(rotSpeed);
+            yield return null;
+        }
+        pickUpAngleDiff = 0;
+        StopCoroutine(FixPlayerTransformOnPickUp());
+
+    }
+
     private IEnumerator FixPlayerPosOnLayUp()
     {
         //Debug.Break();
@@ -319,4 +362,26 @@ public class BasketballPlayer : PlayerAgent
     {
         this.transform.position = new Vector3(this.transform.position.x,0,this.transform.position.z);
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class A
+{
+
 }
