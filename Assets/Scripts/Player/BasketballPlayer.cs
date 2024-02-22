@@ -31,6 +31,9 @@ public struct PlayerSpeedDeadZone
 public struct PlayerAnimationData
 {
     public const int shootEvent = 16;
+    public const int layUpLength = 90;
+    public const float playerHeight = 2.0f;
+    public const float playerLayUpAnimMaxHeight = 0.42f;
 }
 
 
@@ -55,7 +58,12 @@ public class BasketballPlayer : PlayerAgent
     private GameObject hoopF;
     [SerializeField]
     private GameObject hoopB;
+
     private float shootAngleDiff;
+
+    private Vector3 layUpPosDiff;
+    private float layUpJumpDist;
+    private float layUpSpeed;
 
     [SerializeField]
     private Rig rig;
@@ -223,6 +231,14 @@ public class BasketballPlayer : PlayerAgent
         StartCoroutine(FixPlayerTransformOnShoot());
         flyBall.transform.position = Vector3.zero;
         flyBall.transform.SetParent(rightHandTransform,true);
+
+        float heightDiff = HallDataStruct.HoopWireHeight - PlayerAnimationData.playerHeight - PlayerAnimationData.playerLayUpAnimMaxHeight;
+        Vector3 hoopUpVector3 = hoopF.transform.position - new Vector3(hoopF.transform.position.x, heightDiff, hoopF.transform.position.z);
+        Vector3 playerForwardVector3 = new Vector3(hoopF.transform.position.x, 0, hoopF.transform.position.z) - new Vector3(this.transform.position.x, 0, this.transform.position.z);
+        layUpPosDiff = hoopUpVector3 + playerForwardVector3;
+        layUpJumpDist = layUpPosDiff.magnitude;
+        layUpSpeed = layUpJumpDist / PlayerAnimationData.layUpLength;
+        StartCoroutine(FixPlayerPosOnLayUp());
         state = PlayerState.Idle;
     }
 
@@ -241,6 +257,19 @@ public class BasketballPlayer : PlayerAgent
         Vector3 lookDir = new Vector3(faceDir.x, 0, faceDir.y);
         Quaternion rot = Quaternion.LookRotation(lookDir, transform.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, angleSpeed * Time.deltaTime);
+    }
+
+    private IEnumerator FixPlayerPosOnLayUp()
+    {
+        while (layUpJumpDist > 0)
+        {
+            Vector3 dir = layUpPosDiff.normalized;
+            Vector3 movement = new Vector3(dir.x, dir.y, dir.z) * layUpSpeed*Time.deltaTime;
+            this.transform.Translate(movement);
+            layUpJumpDist -= layUpSpeed;
+            yield return null;
+        }
+        StopCoroutine(FixPlayerPosOnLayUp());
     }
 
     private IEnumerator FixPlayerTransformOnShoot()
